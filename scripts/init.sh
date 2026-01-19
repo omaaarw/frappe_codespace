@@ -11,6 +11,7 @@ fi
 rm -rf /workspaces/frappe_codespace/.git
 
 source /home/frappe/.nvm/nvm.sh
+
 nvm alias default 18
 nvm use 18
 
@@ -23,12 +24,12 @@ bench init \
 frappe-bench
 
 cd frappe-bench
-
+npm install -g yarn
 # Use containers instead of localhost
 bench set-mariadb-host mariadb
-bench set-redis-cache-host redis-cache:6379
-bench set-redis-queue-host redis-queue:6379
-bench set-redis-socketio-host redis-socketio:6379
+bench set-redis-cache-host redis-cache
+bench set-redis-queue-host redis-queue
+bench set-redis-socketio-host redis-socketio
 
 # Remove redis from Procfile
 sed -i '/redis/d' ./Procfile
